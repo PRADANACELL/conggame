@@ -1,134 +1,249 @@
 <!doctype html>
-<html lang="en">
+<html lang="vi">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Delete Account Game Bài Tài Xỉu Đổi Thưởng</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HKQ LIMITED — Game Studio</title>
+  <meta name="description" content="HKQ LIMITED - Sáng tạo trò chơi hấp dẫn, trải nghiệm đỉnh cao trên mọi nền tảng." />
+
   <style>
-    :root{ --bg:#f7fbf6; --card:#ffffff; --accent:#2f9e4a; --muted:#6b7280; --shadow:0 6px 18px rgba(10,10,10,0.06); --border:#e6ece4; }
-    body{ margin:0; font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial; background:var(--bg); color:#0b1220; padding:28px; display:flex; justify-content:center; }
-    .container{ max-width:900px; width:100%; }
-    header{ background:var(--card); border-radius:12px; padding:20px; box-shadow:var(--shadow); border:1px solid var(--border); }
-    header h1{ margin:0; font-size:22px; }
-    header p{ margin:6px 0 0 0; color:var(--muted); }
+    :root{
+      --accent:#7c3aed; /* purple */
+      --muted:#6b7280;
+      --bg:#0f172a;
+      --card:#0b1220;
+      --glass: rgba(255,255,255,0.04);
+      --maxw:1100px;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      color-scheme: dark;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background: linear-gradient(180deg, #071029 0%, #07111a 60%);
+      color:#e6eef8;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.5;
+      padding:32px 16px;
+      display:flex;
+      justify-content:center;
+    }
+    .container{width:100%;max-width:var(--maxw)}
 
-    .content{ margin-top:18px; background:var(--card); border-radius:12px; padding:18px; box-shadow:var(--shadow); border:1px solid var(--border); }
-    .instructions{ line-height:1.6; }
-    .instructions ol{ margin:8px 0 0 18px; }
-    .mailto{ display:inline-block; margin-top:10px; padding:8px 12px; background:#f1f6f2; border-radius:8px; color:var(--accent); text-decoration:none; border:1px solid transparent; }
+    header{
+      display:flex;align-items:center;justify-content:space-between;padding:12px 0;
+    }
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{
+      width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#06b6d4);
+      display:flex;align-items:center;justify-content:center;font-weight:700;font-size:18px;color:white;box-shadow:0 6px 20px rgba(124,58,237,0.18);
+    }
+    .brand h1{margin:0;font-size:18px}
+    nav a{color:var(--muted);text-decoration:none;margin-left:18px;font-weight:600}
+    nav a.cta{background:var(--accent);padding:8px 14px;border-radius:10px;color:white}
 
-    .chat-card{ margin-top:16px; border-radius:10px; padding:12px; background:#fff; border:1px solid var(--border); }
-    .comments{ max-height:300px; overflow:auto; padding:6px; display:flex; flex-direction:column; gap:8px; }
-    .comment{ padding:10px; border-radius:8px; background:#fbfffb; border:1px solid #eef6ec; }
-    .comment .meta{ font-size:12px; color:var(--muted); margin-bottom:6px; }
-    .composer{ display:flex; gap:8px; margin-top:10px; }
-    textarea{ flex:1; min-height:70px; padding:10px; border-radius:8px; border:1px solid #e6ece4; resize:vertical; }
-    button{ padding:10px 14px; border-radius:8px; border:0; cursor:pointer; font-weight:600; }
-    .btn-post{ background:var(--accent); color:#fff; }
-    .btn-clear{ background:#f2f4f7; color:#111827; }
-    .muted{ color:var(--muted); font-size:13px; }
+    .hero{
+      margin-top:28px;display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;
+    }
+    .hero-left{padding:28px;background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);border-radius:16px;backdrop-filter: blur(6px);}
+    .eyebrow{color:var(--muted);font-weight:700;margin-bottom:8px}
+    .h1{font-size:36px;margin:6px 0 12px}
+    .lead{color:#cfe6ff;margin-bottom:18px}
+    .buttons{display:flex;gap:12px}
+    .btn{padding:12px 18px;border-radius:12px;font-weight:700;border:0;cursor:pointer}
+    .btn-primary{background:linear-gradient(90deg,var(--accent),#06b6d4);color:white}
+    .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted)}
 
-    footer{ margin-top:12px; font-size:13px; color:var(--muted); }
+    .hero-right{padding:20px;border-radius:16px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));display:flex;flex-direction:column;gap:12px}
+    .card{background:var(--card);padding:12px;border-radius:12px}
+    .game-snapshot{height:220px;border-radius:10px;background-image:linear-gradient(120deg, rgba(0,0,0,0.2), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1606813902803-4a2e7b8c1f8d?auto=format&fit=crop&w=1200&q=60');background-size:cover;background-position:center}
 
-    @media (max-width:640px){ body{ padding:14px } header h1{ font-size:18px } }
+    .features{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:28px 0}
+    .feature{background:var(--glass);padding:18px;border-radius:12px}
+    .feature h3{margin:8px 0 6px}
+    .feature p{color:var(--muted);margin:0}
+
+    .games{margin:10px 0 28px}
+    .games-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    .game{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);padding:12px;border-radius:12px;display:flex;flex-direction:column;gap:8px}
+    .game .poster{height:120px;border-radius:8px;background-size:cover;background-position:center}
+    .game h4{margin:0}
+    .game p{margin:0;color:var(--muted);font-size:14px}
+
+    .testimonials{margin-top:28px;padding:18px;border-radius:12px;background:linear-gradient(90deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02));}
+    .testimonials p{color:var(--muted);margin:0}
+
+    footer{margin-top:36px;padding:18px 0;color:var(--muted);display:flex;justify-content:space-between;align-items:center}
+
+    /* responsive */
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr}
+      .features{grid-template-columns:repeat(2,1fr)}
+      .games-grid{grid-template-columns:repeat(2,1fr)}
+    }
+    @media (max-width:640px){
+      body{padding:18px}
+      .features{grid-template-columns:1fr}
+      .games-grid{grid-template-columns:1fr}
+      nav a{display:none}
+      nav a.cta{display:inline-block}
+    }
+
+    /* small animations */
+    .logo, .card, .game, .feature{transition:transform .28s ease, box-shadow .28s ease}
+    .logo:hover{transform:translateY(-4px)}
+    .game:hover, .feature:hover{transform:translateY(-6px);box-shadow:0 12px 40px rgba(2,6,23,0.6)}
   </style>
 </head>
 <body>
   <div class="container">
     <header>
-      <h1>Delete Account Game Bài Tài Xỉu Đổi Thưởng</h1>
+      <div class="brand">
+        <div class="logo">HKQ</div>
+        <div>
+          <h1>HKQ LIMITED</h1>
+          <div style="font-size:12px;color:var(--muted)">Innovate. Play. Connect.</div>
+        </div>
+      </div>
+      <nav>
+        <a href="#games">Sản phẩm</a>
+        <a href="#about">Về chúng tôi</a>
+        <a href="#contact" class="cta">Liên hệ</a>
+      </nav>
     </header>
 
-    <main class="content" role="main" aria-labelledby="mainTitle">
-      <h2 id="mainTitle" style="margin:0 0 10px 0">If you want delete account:</h2>
-      <div class="instructions">
-        <ol>
-          <li>Send email to: <a class="mailto" href="mailto:sintiacoufer@hotmail.com?subject=Request%20to%20delete%Game Bài Tài Xỉu Đổi Thưởng%20account">sintiacoufer@hotmail.com</a></li>
-          <li>Comment in this post. We will feedback.</li>
-        </ol>
-      </div>
+    <main>
+      <section class="hero">
+        <div class="hero-left">
+          <div class="eyebrow">STUDIO GAME ĐANG PHÁT TRIỂN</div>
+          <div class="h1">HKQ LIMITED — Tạo nên trải nghiệm game không giới hạn</div>
+          <div class="lead">Chúng tôi thiết kế game di động và PC với đồ họa bắt mắt, gameplay đổi mới và kết nối cộng đồng. Từ casual tới core — HKQ mang đến từng trải nghiệm khiến người chơi quay lại.</div>
 
-      <section class="chat-card" aria-label="Comment and chat area">
-        <div style="display:flex;justify-content:space-between;align-items:center;">
-          <strong>Comments / Chat</strong>
-          <span id="count" class="muted">0 comments</span>
-        </div>
+          <div class="buttons">
+            <button class="btn btn-primary" onclick="document.location='#games'">Xem trò chơi</button>
+            <button class="btn btn-ghost" onclick="document.location='#about'">Tìm hiểu thêm</button>
+          </div>
 
-        <div id="comments" class="comments" aria-live="polite" aria-relevant="additions" role="list"></div>
-
-        <div class="composer">
-          <textarea id="msg" placeholder="Viết bình luận hoặc gửi yêu cầu xoá..." aria-label="Write your comment"></textarea>
-          <div style="display:flex;flex-direction:column;gap:8px">
-            <button id="post" class="btn-post">Post</button>
-            <button id="clear" class="btn-clear">Clear</button>
+          <div style="margin-top:18px;display:flex;gap:10px;color:var(--muted);font-size:13px">
+            <div>🌍 Phát hành toàn cầu</div>
+            <div>⚙️ Nhiều nền tảng</div>
+            <div>🏆 Đội ngũ giàu kinh nghiệm</div>
           </div>
         </div>
-        <div class="muted" style="margin-top:8px">Comments are stored locally in your browser. For official deletion please also send email to the address above.</div>
+
+        <aside class="hero-right">
+          <div class="card game-snapshot"></div>
+          <div class="card">
+            <strong>HKQ Studio</strong>
+            <p style="margin:6px 0;color:var(--muted);font-size:14px">Sứ mệnh của chúng tôi là kể những câu chuyện thông qua gameplay. Chúng tôi kết hợp công nghệ mới với thiết kế nghiêm ngặt để tạo ra sản phẩm đáng nhớ.</p>
+          </div>
+        </aside>
       </section>
 
-      <footer>
-        <small>We will review comments and provide feedback. This is a simple demo page — to integrate with a real backend, replace the localStorage logic with server requests (fetch / XMLHttpRequest).</small>
-      </footer>
+      <section class="features" aria-label="tính năng">
+        <div class="feature">
+          <h3>Gameplay Độc đáo</h3>
+          <p>Thiết kế cơ chế dễ tiếp cận nhưng có chiều sâu chiến lược cho mọi đối tượng người chơi.</p>
+        </div>
+        <div class="feature">
+          <h3>Đồ họa & Âm thanh</h3>
+          <p>Hình ảnh đẹp, hiệu ứng mượt mà và soundtrack chuyên nghiệp tạo nên thế giới sống động.</p>
+        </div>
+        <div class="feature">
+          <h3>Cộng đồng & Esports</h3>
+          <p>Hỗ trợ tính năng xã hội, đấu xếp hạng và giải đấu cho game có tính cạnh tranh cao.</p>
+        </div>
+      </section>
+
+      <section id="games" class="games">
+        <h2 style="margin:0 0 12px">Sản phẩm nổi bật</h2>
+        <div class="games-grid">
+          <div class="game">
+            <div class="poster" style="background-image:url('https://images.unsplash.com/photo-1603791440384-56cd371ee9a7?auto=format&fit=crop&w=800&q=60')"></div>
+            <h4>Battle Realms — Alpha</h4>
+            <p>Chiến thuật thời gian thực kết hợp yếu tố RPG. Ra mắt trên PC & Console.</p>
+          </div>
+
+          <div class="game">
+            <div class="poster" style="background-image:url('https://images.unsplash.com/photo-1611605696879-0f7d7b8b2d7d?auto=format&fit=crop&w=800&q=60')"></div>
+            <h4>Sky Drift</h4>
+            <p>Đua mạo hiểm trên bầu trời, điều khiển đơn giản — trải nghiệm lôi cuốn cho di động.</p>
+          </div>
+
+          <div class="game">
+            <div class="poster" style="background-image:url('https://images.unsplash.com/photo-1483729558449-99ef09a8c325?auto=format&fit=crop&w=800&q=60')"></div>
+            <h4>Puzzle Kingdom</h4>
+            <p>Giải đố kết hợp xây dựng vương quốc — phù hợp cho mọi lứa tuổi.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" style="margin-top:28px">
+        <h2>Về HKQ LIMITED</h2>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:12px">
+          <div class="card">
+            <h3>Tầm nhìn</h3>
+            <p style="color:var(--muted);">Trở thành studio game được người chơi trên toàn thế giới yêu thích vì sáng tạo và chất lượng.</p>
+          </div>
+          <div class="card">
+            <h3>Đội ngũ</h3>
+            <p style="color:var(--muted);">Nhóm kĩ sư, nghệ sĩ và nhà thiết kế giàu kinh nghiệm từng làm việc tại nhiều dự án AAA và indie thành công.</p>
+          </div>
+        </div>
+
+        <div class="testimonials" style="margin-top:16px">
+          <strong>Đối tác & Lời khen</strong>
+          <p style="margin-top:8px">"HKQ đã giúp ý tưởng game của chúng tôi trở thành sản phẩm có thể phát hành — đội ngũ chuyên nghiệp, nhiệt huyết." — Nhà phát hành X</p>
+        </div>
+      </section>
+
+      <section id="contact" style="margin-top:28px">
+        <h2>Liên hệ</h2>
+        <div style="display:grid;grid-template-columns:1fr 320px;gap:16px;margin-top:12px">
+          <form class="card" onsubmit="event.preventDefault(); alert('Cảm ơn! Chúng tôi sẽ liên hệ sớm.');">
+            <label style="display:block;margin-bottom:8px;font-weight:700">Họ tên</label>
+            <input type="text" required placeholder="Tên của bạn" style="width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit;margin-bottom:10px">
+
+            <label style="display:block;margin-bottom:8px;font-weight:700">Email</label>
+            <input type="email" required placeholder="email@domain.com" style="width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit;margin-bottom:10px">
+
+            <label style="display:block;margin-bottom:8px;font-weight:700">Tin nhắn</label>
+            <textarea placeholder="Bạn muốn hợp tác/đầu tư/thuê phát triển..." style="width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit;min-height:90px"></textarea>
+
+            <div style="margin-top:10px;text-align:right">
+              <button class="btn btn-primary" type="submit">Gửi liên hệ</button>
+            </div>
+          </form>
+
+          <aside style="display:flex;flex-direction:column;gap:12px">
+            <div class="card">
+              <strong>Văn phòng</strong>
+              <p style="color:var(--muted);margin:6px 0">HKQ LIMITED — Trụ sở chính</p>
+              <p style="color:var(--muted);margin:0">Email: contact@hkqlimited.com</p>
+              <p style="color:var(--muted);margin:0">Điện thoại: +84 123 456 789</p>
+            </div>
+
+            <div class="card">
+              <strong>Tuyển dụng</strong>
+              <p style="color:var(--muted);margin:6px 0">Chúng tôi tuyển: Lập trình viên game, Artist, Game Designer, QA.</p>
+              <a href="#" style="color:var(--accent);font-weight:700;text-decoration:none">Xem cơ hội</a>
+            </div>
+          </aside>
+        </div>
+      </section>
+
     </main>
+
+    <footer>
+      <div>© <span id="year"></span> HKQ LIMITED — Tất cả quyền được bảo lưu.</div>
+      <div style="color:var(--muted)">Theo dõi: <span style="color:var(--accent);font-weight:700">Twitter</span> • <span style="color:var(--accent);font-weight:700">Discord</span></div>
+    </footer>
   </div>
 
   <script>
-    // Simple client-side comments stored in localStorage
-    const COMMENTS_KEY = 'lf_delete_comments_v1';
-    const commentsEl = document.getElementById('comments');
-    const countEl = document.getElementById('count');
-    const postBtn = document.getElementById('post');
-    const clearBtn = document.getElementById('clear');
-    const msgEl = document.getElementById('msg');
-
-    function loadComments(){
-      try{
-        const raw = localStorage.getItem(COMMENTS_KEY);
-        return raw ? JSON.parse(raw) : [];
-      }catch(e){ return []; }
-    }
-
-    function saveComments(list){
-      localStorage.setItem(COMMENTS_KEY, JSON.stringify(list));
-    }
-
-    function render(){
-      const list = loadComments();
-      commentsEl.innerHTML = '';
-      if(list.length === 0){
-        commentsEl.innerHTML = '<div class="muted">No comments yet — be the first to comment.</div>';
-      } else {
-        list.slice().reverse().forEach(c => {
-          const div = document.createElement('div'); div.className='comment'; div.setAttribute('role','listitem');
-          const meta = document.createElement('div'); meta.className='meta'; meta.textContent = c.name + ' · ' + new Date(c.ts).toLocaleString();
-          const body = document.createElement('div'); body.textContent = c.text;
-          div.appendChild(meta); div.appendChild(body);
-          commentsEl.appendChild(div);
-        });
-      }
-      countEl.textContent = list.length + ' comment' + (list.length===1 ? '' : 's');
-    }
-
-    function addComment(text){
-      const name = 'Anonymous';
-      const list = loadComments();
-      list.push({ name, text: text.trim(), ts: Date.now() });
-      saveComments(list);
-      render();
-    }
-
-    postBtn.addEventListener('click', () => {
-      const t = msgEl.value || '';
-      if(t.trim().length < 2){ alert('Please write a comment (2+ characters).'); msgEl.focus(); return; }
-      addComment(t);
-      msgEl.value = '';
-      msgEl.focus();
-    });
-
-    clearBtn.addEventListener('click', () => { msgEl.value = ''; msgEl.focus(); });
-
-    // initialize
-    render();
+    document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
